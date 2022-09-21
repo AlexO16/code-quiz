@@ -1,29 +1,42 @@
+//Starting variable values
 var currentScore = 0;
 var interval
+var indexQuestion = 0;
+var secondsLeft = 75;
+//
+
+
+//Select the existing elements on the page
 var startBtnEl = document.querySelector("#startBtn");
 var timerEl = document.querySelector(".timer");
-var indexQuestion = 0;
 var containerEl = document.querySelector("#container")
 var mainEl = document.querySelector("main")
 
 
-
-
-var secondsLeft = 70;
-
+//function to run the timer during the quiz
 function countdown() {
+    //set an interval for the timer to run on
     interval = setInterval(function () {
+        //decrease seconds left by 1
         secondsLeft--
-        timerEl.textContent = "time: " + secondsLeft
+        //rewrite the timer elements text content to have the current time left
+        timerEl.textContent = "Time: " + secondsLeft;
+        //if the timer runs out
+        if (secondsLeft === 0) {
+            //end the interval running the timer
+            clearInterval(interval);
+        }
     }, 1000)
 }
 
 
-
-
+//listen for a click on the start button
 startBtnEl.addEventListener("click", function () {
+    //remove the container element holding the landing page
     containerEl.remove()
+    //start the timer
     countdown()
+    //ask the first question
     askQuestion()
 })
 
@@ -61,36 +74,77 @@ var questions = [
 
 
 function askQuestion() {
+    //create a section element
     var section = document.createElement("section")
+    //give the section element an id of question
     section.setAttribute("id", "question")
+    //Create a variable that stores the current question object from the questions array
     var currentQuestionObject = questions[indexQuestion]
+    //Create an h2 element to display the question
     var questionText = document.createElement("h2");
+    //Display the question by setting the text content of the h2 element to the current questions's object question property
     questionText.textContent = currentQuestionObject.question
+    //Append the h2 element to the section element
     section.append(questionText);
+
+    //for every answer choice for the current question
     for (var i = 0; i < currentQuestionObject.choices.length; i++) {
+        //Create a button element
         var buttonEl = document.createElement("button");
+        //set the button's text to be the choice at the current index in the for loop
         buttonEl.textContent = currentQuestionObject.choices[i]
+        //Append the button to the section elemnet 
         section.append(buttonEl)
+
     };
-    mainEl.append(section) };
-    
-    
-    
-    
-    //creat an h2 tag, give it the text of the question
-    //creat a ul tag 
-    //for each answer, creat an li tag
 
-    //add all this stuff to the DOM
+    //Append the section holding the question to the main element of the page
+    mainEl.append(section)
 
+    //On the whole section element, listen for a click
+    section.addEventListener("click", function (event) {
+        //Clear the current question and answer
+        //If the answer clicked is correct then do this
+        console.log(event.target.textContent)
+        mainEl.innerHTML = " "
+        indexQuestion++
+        if (event.target.textContent === currentQuestionObject.answer) {
+            
 
-    //when the user clicks stat, what needs to happen:
-    //timer starts
-    //display a question
-    //askQuestion
-    //figure out how to set the answer 
-    //turn questions into an array and loop through
-    //event listeners
-    //clicking the start button 
-    //when the user chooses an answer
+        } else {
+            wrongAnswer()
+           
+        }
+
+        if(indexQuestion === questions.length){
+            gameEnd()
+            
+             //check if indexQuestion is === length of the question array
+            //if so end game gameEnd()
+        
+        }
+        else{
+        askQuestion()
+        
+        }
+    })
+};
+
+function wrongAnswer(){
+    secondsLeft -= 15; 
+}
+
+function gameEnd(){
+   
+    
+   //Text All Done
+   //add name for score 
+   //stop time for score
+   //return
+    
+}
+
+function resetGame(){
+    
+}
 
