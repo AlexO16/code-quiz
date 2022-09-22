@@ -3,7 +3,7 @@ var currentScore = 0;
 var interval
 var indexQuestion = 0;
 var secondsLeft = 75;
-//
+
 
 
 //Select the existing elements on the page
@@ -136,13 +136,16 @@ function wrongAnswer(){
 
 function quizEnd(){
    mainEl.innerHTML = "";
-   var createH1 = document.createElement("p");
+   var createH1 = document.createElement("div");
    createH1.setAttribute("id", "createH1");
    createH1.textContent = "All Done!"
     mainEl.appendChild(createH1);
-    // if (secondsLeft >= 0) {
-    //     var
-    // }
+    if (secondsLeft >= 0) { //time goes negative score not displayed
+        var createH2 = document.createElement("div");
+        createH2.setAttribute("id", "createH2");
+        createH2.textContent = "Your final score is: " + secondsLeft;
+        mainEl.appendChild(createH2);
+    }
 
 
 
