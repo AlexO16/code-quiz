@@ -117,7 +117,7 @@ function askQuestion() {
         }
 
         if(indexQuestion === questions.length){
-            gameEnd()
+            quizEnd()
             
              //check if indexQuestion is === length of the question array
             //if so end game gameEnd()
@@ -134,17 +134,23 @@ function wrongAnswer(){
     secondsLeft -= 15; 
 }
 
-function gameEnd(){
-   
+function quizEnd(){
+   mainEl.innerHTML = "";
+   var createH1 = document.createElement("p");
+   createH1.setAttribute("id", "createH1");
+   createH1.textContent = "All Done!"
+    mainEl.appendChild(createH1);
+    // if (secondsLeft >= 0) {
+    //     var
+    // }
+
+
+
     
-   //Text All Done
+   
    //add name for score 
    //stop time for score
    //return
-    
-}
-
-function resetGame(){
     
 }
 
