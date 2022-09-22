@@ -140,7 +140,7 @@ function quizEnd(){
    createH1.setAttribute("id", "createH1");
    createH1.textContent = "All Done!"
     mainEl.appendChild(createH1);
-    if (secondsLeft >= 0) { //time goes negative score not displayed
+    if (secondsLeft >= 0) { //timer does not stop
         var createH2 = document.createElement("div");
         createH2.setAttribute("id", "createH2");
         createH2.textContent = "Your final score is: " + secondsLeft;
