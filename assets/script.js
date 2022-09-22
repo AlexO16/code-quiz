@@ -5,12 +5,23 @@ var indexQuestion = 0;
 var secondsLeft = 75;
 
 
-
 //Select the existing elements on the page
 var startBtnEl = document.querySelector("#startBtn");
 var timerEl = document.querySelector(".timer");
-var containerEl = document.querySelector("#container")
-var mainEl = document.querySelector("main")
+var containerEl = document.querySelector("#container");
+var mainEl = document.querySelector("main");
+
+var store;
+
+if(localStorage.getItem("user")) {
+    store = JSON.parse(localStorage.getItem('user'));
+} else {
+    store = [];
+}
+
+
+
+
 
 
 //function to run the timer during the quiz
@@ -25,6 +36,12 @@ function countdown() {
         if (secondsLeft === 0) {
             //end the interval running the timer
             clearInterval(interval);
+            //If you run out of time you are taken to the end screen
+            if (secondsLeft <= 0) {
+                clearInterval(interval);
+                quizEnd()
+                timerEl.textContent = "Time's up!";
+            };
         }
     }, 1000)
 }
@@ -109,51 +126,89 @@ function askQuestion() {
         mainEl.innerHTML = " "
         indexQuestion++
         if (event.target.textContent === currentQuestionObject.answer) {
-            
+            //right answer add plus 1 to current score
+            currentScore++
 
         } else {
+            //wrong answer -15 seconds from secondsLeft
             wrongAnswer()
-           
+
         }
 
-        if(indexQuestion === questions.length){
+        //once the questions are done you are presented with an end screen
+        if (indexQuestion === questions.length) {
             quizEnd()
-            
-             //check if indexQuestion is === length of the question array
+
+            //check if indexQuestion is === length of the question array
             //if so end game gameEnd()
-        
+
         }
-        else{
-        askQuestion()
-        
+        else {
+            askQuestion()
+
         }
     })
 };
 
-function wrongAnswer(){
-    secondsLeft -= 15; 
+//time penalty
+function wrongAnswer() {
+    secondsLeft -= 15;
 }
 
-function quizEnd(){
-   mainEl.innerHTML = "";
-   var createH1 = document.createElement("div");
-   createH1.setAttribute("id", "createH1");
-   createH1.textContent = "All Done!"
+//quiz end screen 
+function quizEnd() {
+    mainEl.innerHTML = "";
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("id", "createH1");
+    //Display All Done! when quiz is over
+    createH1.textContent = "All Done!"
     mainEl.appendChild(createH1);
-    if (secondsLeft >= 0) { //timer does not stop
-        var createH2 = document.createElement("div");
+    if (secondsLeft >= 0) {
+        var createH2 = document.createElement("h2");
         createH2.setAttribute("id", "createH2");
-        createH2.textContent = "Your final score is: " + secondsLeft;
+        createH2.textContent = "Your final score is: " + currentScore;
+        clearInterval(interval);
         mainEl.appendChild(createH2);
+    }
+    
+    var userH4 = document.createElement("h4");
+    userH4.textContent = "Enter your initials: ";
+    mainEl.appendChild(userH4);
+    
+    var userInput = document.createElement("input");
+    userInput.setAttribute("type", "text");
+    mainEl.appendChild(userInput);
+    var submitBtn = document.createElement("button");
+    submitBtn.innerText = "Submit";
+    submitBtn.setAttribute("class", "submitScore")
+    mainEl.appendChild(submitBtn);
+    submitBtn.addEventListener("click", storeScore);
+
+    function storeScore() {
+        var userInitials = document.querySelector("input").value;  
+        store.push({[userInitials]: currentScore});
+        localStorage.setItem('user',JSON.stringify(store));
     }
 
 
+    //create input name inputHTML tag
+    //create a new button add event listener that will call highscore that takes me to the highscore function
 
-    
-   
-   //add name for score 
-   //stop time for score
-   //return
-    
+    //add name for score 
+    //store score 
+    //save name
+    //view highscore button to work
+
 }
+
+function highScore() {
+    mainEl.innerHTML= "";
+    var createH3 = documnet.createElement("h3");
+    createH3.setAttribute("id", "createH3");
+
+}
+
+//add event listener for the highscore 
+//create new page with scores 
+//highscore event to go to score page 
 
