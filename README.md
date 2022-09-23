@@ -2,7 +2,7 @@
 
 # Description
 
-This webpage is a small quiz designed to test your knowledge about JavaScript. It is a timed multiple-choice quiz with a high score at the end based on time. When answering the questions you’ll be notified if you got them right or wrong. Every wrong answer removes 10 seconds from your time affecting your high score.
+This webpage is a small quiz designed to test your knowledge about JavaScript. It is a timed multiple-choice quiz with a high score at the end based on the amout of questions that you got right. Every wrong answer removes 10 seconds from your time. Can you get the high score? Good luck!
 
 # Screenshot
 
@@ -10,7 +10,7 @@ This webpage is a small quiz designed to test your knowledge about JavaScript. I
 
 # Links
 * [Deployed webpage](https://alexo16.github.io/code-quiz/)
-* [Repository](
+* [Repository](https://github.com/AlexO16/code-quiz)
 
 
 # Credits
