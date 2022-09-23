@@ -2,7 +2,7 @@
 
 # Description
 
-This webpage is a small quiz designed to test your knowledge about JavaScript. It is a timed multiple-choice quiz with a high score at the end based on the amout of questions that you got right. Every wrong answer removes 10 seconds from your time. Can you get the high score? Good luck!
+This webpage is a small quiz designed to test your knowledge about JavaScript. It is a timed multiple-choice quiz with a high score at the end based on the amout of questions that you got right. Every wrong answer removes 15 seconds from your time. Can you get the high score? Good luck!
 
 # Screenshot
 
