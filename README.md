@@ -6,7 +6,8 @@ This webpage is a small quiz designed to test your knowledge about JavaScript. I
 
 # Screenshot
 
-![_Users_alex_bootcamp_homework_code-quiz_index html](https://user-images.githubusercontent.com/110851664/191383912-8cfbff8d-fcb9-4d24-b713-5ce4f96b383d.png)
+![Screen Shot 2022-09-23 at 3 42 50 PM](https://user-images.githubusercontent.com/110851664/192053549-58f0f839-a508-443b-91d3-d358e1a5f045.png)
+
 
 # Links
 * [Deployed webpage](https://alexo16.github.io/code-quiz/)
