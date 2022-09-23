@@ -11,7 +11,7 @@
 
 <body>
     <header id="header">
-        <button class="score" type="button"> View highscores</button>
+        <!--<button class="score" type="button" onclick="displayItems(highscore)"> View highscores</button>-->
         <div class="timer"> Time: </div>
     </header>
 
@@ -23,9 +23,13 @@
             <button id="startBtn" type="button">Start Quiz</button>
         </section>
 
-
-
     </main>
+    <div id="highscore" class="hide">
+        <h5>Quiz scores</h5>
+        <button id="reload" type="button">Try quiz again</button>
+        <button id="clearlocalstorage" type="button">Clear highscores</button>
+
+     </div>
 
 
 

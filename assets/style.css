@@ -1,5 +1,6 @@
 html {
     height: 100vh;
+    background-color: beige;
 }
 
 #header {
@@ -27,6 +28,7 @@ main {
     border: solid black;
     padding-top: 35px;
     padding-bottom: 50px;
+    background-color: beige;
    
 }
 
@@ -43,3 +45,6 @@ flex-basis: 200px;
     padding: 10px 27px;
 
 }
+/*.hide{
+    display:none;
+}*/

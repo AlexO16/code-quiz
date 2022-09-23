@@ -11,6 +11,7 @@ var timerEl = document.querySelector(".timer");
 var containerEl = document.querySelector("#container");
 var mainEl = document.querySelector("main");
 
+//Store user score and initials
 var store;
 
 if(localStorage.getItem("user")) {
@@ -170,45 +171,47 @@ function quizEnd() {
         clearInterval(interval);
         mainEl.appendChild(createH2);
     }
-    
+    //Text for user to enter their initials 
     var userH4 = document.createElement("h4");
     userH4.textContent = "Enter your initials: ";
     mainEl.appendChild(userH4);
     
+    //Box to add initials
     var userInput = document.createElement("input");
     userInput.setAttribute("type", "text");
     mainEl.appendChild(userInput);
+    //Submit button
     var submitBtn = document.createElement("button");
     submitBtn.innerText = "Submit";
     submitBtn.setAttribute("class", "submitScore")
     mainEl.appendChild(submitBtn);
+    
     submitBtn.addEventListener("click", storeScore);
+     
 
     function storeScore() {
         var userInitials = document.querySelector("input").value;  
         store.push({[userInitials]: currentScore});
         localStorage.setItem('user',JSON.stringify(store));
-    }
 
+} };
 
-    //create input name inputHTML tag
-    //create a new button add event listener that will call highscore that takes me to the highscore function
+// function highScore() {
+//     mainEl.innerHTML= "";
+//     var createH3 = documnet.createElement("h3");
+//     createH3.setAttribute("id", "createH3");
+//     mainEl.appendChild(createH3);
+//     var createScoreList = document.createElement("li");
+//     createScoreList.textContent = store[i];
+//     mainEl.appendChild(createScoreList);
+// }
 
-    //add name for score 
-    //store score 
-    //save name
-    //view highscore button to work
+//Reload the webpage
+reload.addEventListener("click", function () {
+    onclick=window.location.reload(); 
+})
 
-}
-
-function highScore() {
-    mainEl.innerHTML= "";
-    var createH3 = documnet.createElement("h3");
-    createH3.setAttribute("id", "createH3");
-
-}
-
-//add event listener for the highscore 
-//create new page with scores 
-//highscore event to go to score page 
-
+//Clear the previous quiz scores
+clearlocalstorage.addEventListener("click", function(){
+    localStorage.clear();
+})
