@@ -188,7 +188,7 @@ function quizEnd() {
     
     submitBtn.addEventListener("click", storeScore);
      
-
+    //Store user initials and score in the localstorage
     function storeScore() {
         var userInitials = document.querySelector("input").value;  
         store.push({[userInitials]: currentScore});
@@ -196,15 +196,6 @@ function quizEnd() {
 
 } };
 
-// function highScore() {
-//     mainEl.innerHTML= "";
-//     var createH3 = documnet.createElement("h3");
-//     createH3.setAttribute("id", "createH3");
-//     mainEl.appendChild(createH3);
-//     var createScoreList = document.createElement("li");
-//     createScoreList.textContent = store[i];
-//     mainEl.appendChild(createScoreList);
-// }
 
 //Reload the webpage
 reload.addEventListener("click", function () {
