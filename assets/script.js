@@ -10,18 +10,24 @@ var startBtnEl = document.querySelector("#startBtn");
 var timerEl = document.querySelector(".timer");
 var containerEl = document.querySelector("#container");
 var mainEl = document.querySelector("main");
+var quizScores = document.querySelector("#quiz-scores");
 
 //Store user score and initials
 var store;
 
-if(localStorage.getItem("user")) {
-    store = JSON.parse(localStorage.getItem('user'));
-} else {
-    store = [];
+function loadScores(){
+    quizScores.innerHTML="";
+    if(localStorage.getItem("user")) {
+        store = JSON.parse(localStorage.getItem('user'));
+        for (i = 0; i < store.length; i++){
+            var listEl = document.createElement("li");
+            listEl.textContent = `${store[i]}`
+            quizScores.appendChild(listEl)
+        }
+    } else {
+        store = [];
+    }
 }
-
-
-
 
 
 
@@ -191,8 +197,9 @@ function quizEnd() {
     //Store user initials and score in the localstorage
     function storeScore() {
         var userInitials = document.querySelector("input").value;  
-        store.push({[userInitials]: currentScore});
+        store.push(`${userInitials} - ${currentScore}`);
         localStorage.setItem('user',JSON.stringify(store));
+        loadScores();
 
 } };
 
@@ -205,4 +212,7 @@ reload.addEventListener("click", function () {
 //Clear the previous quiz scores
 clearlocalstorage.addEventListener("click", function(){
     localStorage.clear();
+    quizScores.innerHTML = "";
 })
+
+loadScores();
